@@ -24,19 +24,22 @@ def main():
     
     # Turn the uploaded image into a batch
     # batch_image = create_data_batches(image)
-    
+
+    resized_image = uploaded_image.resize((32, 32))
+    img_array = np.array(resized_image) / 255
+    img_array = img_array.reshape((1, 32, 32, 3))
     
     # Read in image file
-    process_image = tf.io.read_file(uploaded_image)
+    # process_image = tf.io.read_file(uploaded_image)
     # Turn the jpeg image into a numerical Tensor with 3 colours
-    process_image = tf.image.decode_jpeg(process_image, channels=3)
+    # process_image = tf.image.decode_jpeg(process_image, channels=3)
     # Convert the colour channel values from 0-225 values to 0-1 values
-    process_image = tf.image.convert_image_dtype(process_image, tf.float32)
+    # process_image = tf.image.convert_image_dtype(process_image, tf.float32)
     # Resize the image to our desired size (224, 224)
-    process_image = tf.image.resize(process_image, size=[224, 224])
+    # process_image = tf.image.resize(process_image, size=[224, 224])
         
     # Make a prediction on the uploaded image
-    custom_preds = model.predict(process_image)
+    custom_preds = model.predict(img_array)
     
     
     # Get image prediction labels
