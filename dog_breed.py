@@ -3,8 +3,8 @@ import streamlit as st
 from PIL import Image
 import numpy as np
 import matplotlib.pyplot as plt
-from helper_function import get_pred_label
-from helper_function import create_data_batches
+from helper_functions import get_pred_label
+from helper_functions import create_data_batches
 
 def main():
   st.title('Dog Breed Image Classifier')
