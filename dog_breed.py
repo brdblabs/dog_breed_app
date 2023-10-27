@@ -25,9 +25,9 @@ def main():
     # Turn the uploaded image into a batch
     # batch_image = create_data_batches(image)
 
-    resized_image = uploaded_image.resize((32, 32))
+    resized_image = uploaded_image.resize((224, 224))
     img_array = np.array(resized_image) / 255
-    img_array = img_array.reshape((1, 32, 32, 3))
+    img_array = img_array.reshape((1, 224, 224, 3))
     
     # Read in image file
     # process_image = tf.io.read_file(uploaded_image)
