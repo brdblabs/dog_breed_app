@@ -33,7 +33,7 @@ def main():
     # Convert the colour channel values from 0-225 values to 0-1 values
     process_image = tf.image.convert_image_dtype(process_image, tf.float32)
     # Resize the image to our desired size (224, 224)
-    process_image = tf.image.resize(process_image, size=[IMG_SIZE, IMG_SIZE])
+    process_image = tf.image.resize(process_image, size=(224, 224)
     
         
     # Make a prediction on the uploaded image
