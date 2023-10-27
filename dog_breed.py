@@ -43,6 +43,7 @@ def main():
     
     
     # Get image prediction labels
+    unique_breeds = np.unique(labels)
     custom_pred_labels = [get_pred_label(custom_preds[i]) for i in range(len(custom_preds))]
   
     
