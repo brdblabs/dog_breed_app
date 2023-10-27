@@ -5,7 +5,7 @@ from PIL import Image
 import numpy as np
 import matplotlib.pyplot as plt
 from helper_functions import get_pred_label
-from helper_functions import create_data_batches
+# from helper_functions import create_data_batches
 
 def main():
   st.title('Dog Breed Image Classifier')
@@ -13,8 +13,8 @@ def main():
  
   file = st.file_uploader('Please upload an image', type=['jpg', 'png'])
   if file:
-    image = Image.open(file)
-    st.image(image, use_column_width=True)
+    uploaded_image = Image.open(file)
+    st.image(uploaded_image, use_column_width=True)
     
     # Progress bar while model is running
     st.write('Please standby while your image is analyzed...')
@@ -23,10 +23,21 @@ def main():
     model = tf.keras.models.load_model('dog_breed_model_pretrained.h5', custom_objects={'KerasLayer':hub.KerasLayer})
     
     # Turn the uploaded image into a batch
-    batch_image = create_data_batches(image)
+    # batch_image = create_data_batches(image)
+    
+    
+    # Read in image file
+    process_image = tf.io.read_file(uploaded_image)
+    # Turn the jpeg image into a numerical Tensor with 3 colours
+    process_image = tf.image.decode_jpeg(process_image, channels=3)
+    # Convert the colour channel values from 0-225 values to 0-1 values
+    process_image = tf.image.convert_image_dtype(process_image, tf.float32)
+    # Resize the image to our desired size (224, 224)
+    process_image = tf.image.resize(process_image, size=[IMG_SIZE, IMG_SIZE])
+    
         
     # Make a prediction on the uploaded image
-    custom_preds = model.predict(batch_image)
+    custom_preds = model.predict(process_image)
     
     
     # Get image prediction labels
