@@ -3,6 +3,7 @@ def get_pred_label(prediction_probabilities):
   """
   Turns an array of prediction probabilities into a label
   """
+  unique_breeds = np.unique(labels)
   return unique_breeds[np.argmax(prediction_probabilities)]
 
 # Create a function to turn data into batches
