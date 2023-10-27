@@ -19,7 +19,7 @@ def main():
     st.write('Please standby while your image is analyzed...')
 
     # Load saved model
-    model = tf.keras.models.load_model('dog_breed_model_pretrained.h5')
+    model = tf.keras.models.load_model('dog_breed_model_pretrained.h5', custom_objects={'KerasLayer':hub.KerasLayer})
     
     # Turn the uploaded image into a batch
     batch_image = create_data_batches(image)
