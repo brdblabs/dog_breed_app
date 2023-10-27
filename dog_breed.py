@@ -44,6 +44,8 @@ def main():
     
     
     # Get image prediction labels
+    labels_csv = pd.read_csv("labels.csv")
+    labels = labels_csv["breed"].to_numpy()
     unique_breeds = np.unique(labels)
     custom_pred_labels = [get_pred_label(custom_preds[i]) for i in range(len(custom_preds))]
   
