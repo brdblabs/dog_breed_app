@@ -15,6 +15,7 @@ def create_data_batches(X, y=None, batch_size=32, valid_data=False, test_data=Fa
 
   # If the data is a test dataset, we probably dont have labels
   """
+  import tensorflow as tf
   if test_data:
     print("Creating test data batches...")
     data = tf.data.Dataset.from_tensor_slices((tf.constant(X))) # only filepaths
