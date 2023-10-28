@@ -6,3 +6,5 @@ matplotlib==3.8.0
 tensorflow_hub
 helper_functions
 scikit-learn
+pandas
+keras
