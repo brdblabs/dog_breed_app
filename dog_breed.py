@@ -44,7 +44,7 @@ def main():
     unique_breeds = np.unique(labels)
     predicted_dog = unique_breeds[np.argmax(predictions[0])]
     
-  st.write('Predicted dog: {predicted_dog}')
+    st.write('Predicted dog: {predicted_dog}')
   else:
     st.text('You have not uploaded an image yet.')
 
