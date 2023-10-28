@@ -7,8 +7,6 @@ import pandas as pd
 import matplotlib.pyplot as plt
 from keras.models import load_model
 from keras.preprocessing import image
-from helper_functions import get_pred_label
-# from helper_functions import create_data_batches
 
 def main():
   st.title('Dog Breed Image Classifier')
