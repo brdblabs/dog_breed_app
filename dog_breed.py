@@ -44,7 +44,7 @@ def main():
     labels = labels_csv["breed"].to_numpy()
     unique_breeds = np.unique(labels)
     predicted_dog = unique_breeds[np.argmax(predictions[0])]
-    print(f"Predicted dog: {predicted_dog})
+    print(f"Predicted dog: {predicted_dog}")
     
     # st.write('Predicted dog: {predicted_dog}')
   else:
