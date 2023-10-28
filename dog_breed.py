@@ -28,15 +28,17 @@ def main():
     unique_breeds = np.unique(labels)
 
     # Process the uploaded image
-    process_image = image.load_img(uploaded_image, target_size=(224,224)) 
-    process_image = image.img_to_array(process_image) / 255.0
-    process_image = process_image.reshape((1, 224, 224, 3))
+    process_image = Image.open(uploaded_image)
+    new_image = process_image.resize((224,224))
+    # process_image = image.load_img(uploaded_image, target_size=(224, 224))
+    new_image = image.img_to_array(new_image) / 255.0
+    new_image = new_image.reshape((1, 224, 224, 3))
     
     # Load saved model
     model = tf.keras.models.load_model('dog_breed_model_pretrained.h5', custom_objects={'KerasLayer':hub.KerasLayer})
          
     # Make a prediction on the uploaded image
-    predictions = model.predict(process_image, batch_size=1) 
+    predictions = model.predict(new_image, batch_size=1) 
         
     # Get image prediction labels
     labels_csv = pd.read_csv("labels.csv")
