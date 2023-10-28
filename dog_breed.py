@@ -28,8 +28,7 @@ def main():
     unique_breeds = np.unique(labels)
 
     # Process the uploaded image
-    process_image = Image.open(uploaded_image)
-    new_image = process_image.resize((224,224))
+    new_image = uploaded_image.resize((224,224))
     # process_image = image.load_img(uploaded_image, target_size=(224, 224))
     new_image = image.img_to_array(new_image) / 255.0
     new_image = new_image.reshape((1, 224, 224, 3))
