@@ -9,7 +9,7 @@ from keras.models import load_model
 from keras.preprocessing import image
 
 def main():
-  st.title('Dog Breed Image Classifier')
+  st.title('Dog Breed Identifier')
   st.write("Upload a photo of your favourite pooch")
  
   file = st.file_uploader('Please upload an image', type=['jpg', 'png'])
