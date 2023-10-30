@@ -37,7 +37,7 @@ def main():
     model = tf.keras.models.load_model('dog_breed_model_pretrained.h5', custom_objects={'KerasLayer':hub.KerasLayer})
          
     # Make a prediction on the uploaded image
-    predictions = model.predict(new_image, batch_size=1) 
+    predictions = model.predict(tf.expand_dims(new_image, axis=0)) 
 
     top_10_pred_indexes = predictions.argsort()[-10:][::-1]
     top_10_pred_values = predictions[top_10_pred_indexes]
