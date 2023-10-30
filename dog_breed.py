@@ -34,7 +34,7 @@ def main():
     new_image = new_image.reshape((1, 224, 224, 3))
     
     # Load saved model
-    model = tf.keras.models.load_model('dog_breed_model_pretrained.h5', custom_objects={'KerasLayer':hub.KerasLayer})
+    model = tf.keras.models.load_model('dog-breed-all-images-pretrained.h5', custom_objects={'KerasLayer':hub.KerasLayer})
          
     # Make a prediction on the uploaded image
 
