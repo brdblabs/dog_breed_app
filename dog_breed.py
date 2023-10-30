@@ -39,30 +39,13 @@ def main():
     # Make a prediction on the uploaded image
 
     predictions = model.predict(new_image, batch_size=1)
-    
-=======
-    predictions = model.predict(new_image, batch_size=1) 
-
-    top_10_pred_indexes = predictions.argsort()[-10:][::-1]
-    top_10_pred_values = predictions[top_10_pred_indexes]
-    top_10_pred_labels = unique_breeds[top_10_pred_indexes]
-    
+      
     # Get image prediction labels
     labels_csv = pd.read_csv("labels.csv")
     labels = labels_csv["breed"].to_numpy()
     unique_breeds = np.unique(labels)
     predicted_dog = unique_breeds[np.argmax(predictions[0])]
     st.write(f"Predicted dog: {predicted_dog}")
-
-    # Plot predicted dog breed
-    fig, ax = plt.subplots()
-    y_pos = np.arange(len(top_10_pred_labels))
-    ax.barh(y_pos, predictions[0], align='center')
-    ax.set_yticks(y_pos)
-    ax.set_yticklabels(top_10_pred_labels)
-    ax.invert_yaxis()
-    ax.set_xlabel("Probability")
-    ax.set_title('CIFAR10 Predictions')
     
   else:
     st.text('You have not uploaded an image yet.')
