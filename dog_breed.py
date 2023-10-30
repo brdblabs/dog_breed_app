@@ -47,6 +47,23 @@ def main():
     predicted_dog = unique_breeds[np.argmax(predictions[0])]
     st.write(f"Predicted dog: {predicted_dog}")
     
+    # Plot prediction graph
+    top_10_pred_indexes = predictions[0].argsort()[-10:][::-1]
+    top_10_pred_values = predictions[0][top_10_pred_indexes]
+    top_10_pred_labels = unique_breeds[top_10_pred_indexes]
+    
+    fig, ax = plt.subplots()
+    top_plot = plt.bar(np.arange(len(top_10_pred_labels)), 
+                     top_10_pred_values, 
+                     color="grey")
+    plt.xticks(np.arange(len(top_10_pred_labels)),
+             labels=top_10_pred_labels,
+             rotation="vertical")
+             
+    top_plot[0].set_color('g')
+             
+    st.pyplot(fig)
+    
   else:
     st.text('You have not uploaded an image yet.')
 
