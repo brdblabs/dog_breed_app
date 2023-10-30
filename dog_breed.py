@@ -52,14 +52,12 @@ def main():
 
     # Plot predicted dog breed
     fig, ax = plt.subplots()
-    y_pos = np.arange(len(top_10_pred_labels))
-    ax.barh(y_pos, predictions[0], align='center')
-    ax.set_yticks(y_pos)
-    ax.set_yticklabels("Dog breeds")
-    ax.invert_yaxis()
-    ax.set_xlabel("Probability")
-    ax.set_title('Dog breed Predictions')
-
+    top_plot = plt.bar(np.arange(len(top_10_pred_labels)),
+                     top_10_pred_values,
+                     color="grey")
+    plt.xticks(np.arange(len(top_10_pred_labels)),
+             labels=top_10_pred_labels,
+             rotation="vertical")
     st.pyplot(fig)
     
   else:
