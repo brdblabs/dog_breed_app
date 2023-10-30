@@ -47,22 +47,13 @@ def main():
     st.write(f"Predicted dog: {predicted_dog}")
 
     # Plot predicted dog breed
-    num_rows = 1
-    num_cols = 1
-    num_images = 1
-
-    fig = plt.figure(figsize=(5*2*num_cols, 5*num_rows))
-    for i in range(num_images):
-      plt.subplot(num_rows, 2*num_cols, 2*i+1)
+    fig = plt.figure(figsize=(10, 10))
+    for i, image in enumerate(new_image):
+      plt.subplot(1, 3, i+1)
       plt.xticks([])
       plt.yticks([])
-      plt.title(custom_pred_labels[i])
+      plt.title(predicted_dog[i])
       plt.imshow(image)
-
-      # plt.subplot(num_rows, 2*num_cols, 2*i+2)
-      # plot_pred_conf(prediction_probabilities=custom_preds,
-      #          labels=custom_pred_labels)
-      # plt.tight_layout(h_pad=1.0)
     st.pyplot(fig)
     
   else:
