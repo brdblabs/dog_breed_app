@@ -37,7 +37,7 @@ def main():
     
         
     # Make a prediction on the uploaded image
-    custom_preds = model.predict(process_image)
+    predictions = model.predict(new_image, batch_size=1)
     
     
     # Get image prediction labels
