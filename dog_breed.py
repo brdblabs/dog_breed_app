@@ -61,7 +61,7 @@ def main():
 
       # plt.subplot(num_rows, 2*num_cols, 2*i+2)
       # plot_pred_conf(prediction_probabilities=custom_preds,
-                labels=custom_pred_labels)
+      #          labels=custom_pred_labels)
       # plt.tight_layout(h_pad=1.0)
     st.pyplot(fig)
     
