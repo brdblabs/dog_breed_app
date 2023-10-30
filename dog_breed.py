@@ -45,7 +45,7 @@ def main():
     labels = labels_csv["breed"].to_numpy()
     unique_breeds = np.unique(labels)
     predicted_dog = unique_breeds[np.argmax(predictions[0])]
-    st.write(f"Predicted dog: {predicted_dog}")
+    st.write(f"Predicted dog: **{predicted_dog}**")
     
     # Plot prediction graph
     top_10_pred_indexes = predictions[0].argsort()[-10:][::-1]
