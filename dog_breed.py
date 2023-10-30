@@ -53,7 +53,7 @@ def main():
       plt.xticks([])
       plt.yticks([])
       plt.title(predicted_dog[i])
-      plt.imshow(image)
+      plt.imshow(new_image)
     st.pyplot(fig)
     
   else:
