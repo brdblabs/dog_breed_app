@@ -38,7 +38,11 @@ def main():
          
     # Make a prediction on the uploaded image
     predictions = model.predict(new_image, batch_size=1) 
-        
+
+    top_10_pred_indexes = predictions.argsort()[-10:][::-1]
+    top_10_pred_values = predictions[top_10_pred_indexes]
+    top_10_pred_labels = unique_breeds[top_10_pred_indexes]
+    
     # Get image prediction labels
     labels_csv = pd.read_csv("labels.csv")
     labels = labels_csv["breed"].to_numpy()
@@ -47,13 +51,15 @@ def main():
     st.write(f"Predicted dog: {predicted_dog}")
 
     # Plot predicted dog breed
-    fig = plt.figure(figsize=(10, 10))
-    for i, image in enumerate(new_image):
-      plt.subplot(1, 3, i+1)
-      plt.xticks([])
-      plt.yticks([])
-      plt.title(predicted_dog[i])
-      plt.imshow(new_image)
+    fig, ax = plt.subplots()
+    y_pos = np.arange(len(top_10_pred_labels))
+    ax.barh(y_pos, predictions[0], align='center')
+    ax.set_yticks(y_pos)
+    ax.set_yticklabels(Dog breeds)
+    ax.invert_yaxis()
+    ax.set_xlabel("Probability")
+    ax.set_title('Dog breed Predictions')
+
     st.pyplot(fig)
     
   else:
