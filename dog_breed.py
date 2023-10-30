@@ -51,7 +51,7 @@ def main():
     num_cols = 1
     i_multipler = 0
 
-    plt.figure(figsize=(5*2*num_cols, 5*num_rows))
+    fig = plt.figure(figsize=(5*2*num_cols, 5*num_rows))
     plt.subplot(num_rows, 2*num_cols, 2*i+1)
     plt.xticks([])
     plt.yticks([])
@@ -63,7 +63,7 @@ def main():
                 labels=custom_pred_labels,
                 n=i+i_multiplier)
     plt.tight_layout(h_pad=1.0)
-    plt.show();
+    st.pyplot(fig)
     
   else:
     st.text('You have not uploaded an image yet.')
