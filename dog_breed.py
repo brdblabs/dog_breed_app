@@ -55,7 +55,7 @@ def main():
     y_pos = np.arange(len(top_10_pred_labels))
     ax.barh(y_pos, predictions[0], align='center')
     ax.set_yticks(y_pos)
-    ax.set_yticklabels(Dog breeds)
+    ax.set_yticklabels("Dog breeds")
     ax.invert_yaxis()
     ax.set_xlabel("Probability")
     ax.set_title('Dog breed Predictions')
