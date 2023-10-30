@@ -49,20 +49,20 @@ def main():
     # Plot predicted dog breed
     num_rows = 1
     num_cols = 1
-    i_multipler = 0
+    num_images = 1
 
     fig = plt.figure(figsize=(5*2*num_cols, 5*num_rows))
-    plt.subplot(num_rows, 2*num_cols, 2*i+1)
-    plt.xticks([])
-    plt.yticks([])
-    plt.title(custom_pred_labels[i])
-    plt.imshow(image);
+    for i in range(num_images):
+      plt.subplot(num_rows, 2*num_cols, 2*i+1)
+      plt.xticks([])
+      plt.yticks([])
+      plt.title(custom_pred_labels[i])
+      plt.imshow(image)
 
-    plt.subplot(num_rows, 2*num_cols, 2*i+2)
-    plot_pred_conf(prediction_probabilities=custom_preds,
-                labels=custom_pred_labels,
-                n=i+i_multiplier)
-    plt.tight_layout(h_pad=1.0)
+      # plt.subplot(num_rows, 2*num_cols, 2*i+2)
+      # plot_pred_conf(prediction_probabilities=custom_preds,
+                labels=custom_pred_labels)
+      # plt.tight_layout(h_pad=1.0)
     st.pyplot(fig)
     
   else:
